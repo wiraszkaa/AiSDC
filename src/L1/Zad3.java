@@ -22,14 +22,14 @@ public class Zad3 {
         while(studentIterator.hasNext()) {
             Student student = studentIterator.next();
             if(student != removeStudent) {
-                if (!(counter == studentsRemoved.length && counter == index)) {
+                if(index < studentsRemoved.length) {
                     studentsRemoved[index] = student;
+                    index++;
                 }
-                studentsNotRemoved[index] = student;
-                index++;
             } else {
                 flag = true;
             }
+            studentsNotRemoved[counter] = student;
             counter++;
         }
         if(flag) {

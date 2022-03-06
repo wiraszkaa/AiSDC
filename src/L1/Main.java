@@ -33,7 +33,7 @@ public class Main {
         StudentZad2 studentZad24 = new StudentZad2(4, "Klimke", "Ingrid");
         StudentZad2[] studentZad2 = {studentZad20, studentZad21, studentZad22, studentZad23, studentZad24};
 
-        studentZad20.setMarks(new ArrayList<>(Arrays.asList(4.5, 3.5 , 5.0)));
+        studentZad20.setMarks(new ArrayList<>(Arrays.asList(4.5, 3.5, 5.0)));
         studentZad21.setMarks(new ArrayList<>(Arrays.asList(4.0, 3.0)));
         studentZad22.setMarks(new ArrayList<>(Arrays.asList(5.5, 3.0, 1.0, 2.0, 0.5)));
 
@@ -64,15 +64,15 @@ public class Main {
 //        while(studentIteratorAdded.hasNext()) {
 //            System.out.println(studentIteratorAdded.next());
 //        }
-//        System.out.println("Removing student...");
-//        ArrayIterator<Student> studentIteratorRemoved = zad3.removeStudent(studentIterator, student2);
-//        while(studentIteratorRemoved.hasNext()) {
-//            System.out.println(studentIteratorRemoved.next());
-//        }
-        System.out.println("Sorting students by mark...");
-        ArrayIterator<Student> studentIteratorSorted = zad3.sortMarksDescending(studentIterator);
-        while (studentIteratorSorted.hasNext()) {
-            System.out.println(studentIteratorSorted.next());
+        System.out.println("Removing student...");
+        ArrayIterator<Student> studentIteratorRemoved = zad3.removeStudent(studentIterator, student2);
+        while(studentIteratorRemoved.hasNext()) {
+            System.out.println(studentIteratorRemoved.next());
         }
+//        System.out.println("Sorting students by mark...");
+//        ArrayIterator<Student> studentIteratorSorted = zad3.sortMarksDescending(studentIterator);
+//        while (studentIteratorSorted.hasNext()) {
+//            System.out.println(studentIteratorSorted.next());
+//        }
     }
 }
