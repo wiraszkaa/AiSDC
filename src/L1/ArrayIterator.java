@@ -11,6 +11,14 @@ public class ArrayIterator<T> implements Iterator<T> {
         this.pos = 0;
     }
 
+    public T[] getArray() {
+        return array;
+    }
+
+    public int getPos() {
+        return pos;
+    }
+
     @Override
     public boolean hasNext() {
         return pos < array.length;

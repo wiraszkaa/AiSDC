@@ -15,10 +15,10 @@ public class Main {
         System.out.println("Setting up zad1...");
         Zad1 zad1 = new Zad1(students);
         System.out.println("\nSetting students marks...");
-        zad1.setStudentMark(0, 4);
-        zad1.setStudentMark(1, 3);
-        zad1.setStudentMark(2, 2);
-        zad1.setStudentMark(3, 2);
+        zad1.setStudentMark(0, 5);
+        zad1.setStudentMark(1, 2);
+        zad1.setStudentMark(2, 4);
+        zad1.setStudentMark(3, 3);
         System.out.println("\nShowing all students...");
         zad1.showStudents();
         System.out.println("\nShowing average positive mark...");
@@ -47,5 +47,32 @@ public class Main {
         zad2.avgPositiveMark();
         System.out.println("\nShowing Students that haven't passed...");
         zad2.showNotPassedStudents();
+
+        System.out.println("\nSetting up zad3...");
+        Zad3 zad3 = new Zad3();
+        ArrayIterator<Student> studentIterator = new ArrayIterator<>(students);
+        System.out.println("Moving to index 1...");
+        while(studentIterator.hasNext()) {
+            Student student = studentIterator.next();
+            System.out.println(student);
+            if(student.getIndex() == 1) {
+                break;
+            }
+        }
+//        System.out.println("Adding Student...");
+//        ArrayIterator<Student> studentIteratorAdded = zad3.addStudent(studentIterator, new Student(5, "Grzyb", "Mirek"));
+//        while(studentIteratorAdded.hasNext()) {
+//            System.out.println(studentIteratorAdded.next());
+//        }
+//        System.out.println("Removing student...");
+//        ArrayIterator<Student> studentIteratorRemoved = zad3.removeStudent(studentIterator, student2);
+//        while(studentIteratorRemoved.hasNext()) {
+//            System.out.println(studentIteratorRemoved.next());
+//        }
+        System.out.println("Sorting students by mark...");
+        ArrayIterator<Student> studentIteratorSorted = zad3.sortMarksDescending(studentIterator);
+        while (studentIteratorSorted.hasNext()) {
+            System.out.println(studentIteratorSorted.next());
+        }
     }
 }
