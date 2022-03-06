@@ -1,51 +1,43 @@
 package L1;
 
+
 public class Zad1 {
     private final Student[] students;
-    private final StudentIterator studentIterator;
 
     public Zad1(Student[] students) {
         this.students = students;
-        this.studentIterator = new StudentIterator(students);
     }
 
     public void showStudents() {
-        studentIterator.reset();
+        ArrayIterator<Student> studentIterator = new ArrayIterator<>(students);
         while(studentIterator.hasNext()) {
             System.out.println(studentIterator.next());
         }
     }
 
     public void setStudentMark(int index, double mark) {
-        studentIterator.reset();
+        FilterIterator<Student> studentIterator = new FilterIterator<>(new ArrayIterator<>(students), (student) -> student.getIndex() == index);
         while(studentIterator.hasNext()) {
-            if(studentIterator.next().getIndex() == index) {
-                studentIterator.setMark(mark);
-            }
+            studentIterator.next().setMark(mark);
         }
     }
 
     public void avgPositiveMark() {
-        studentIterator.reset();
+        FilterIterator<Student> studentIterator = new FilterIterator<>(new ArrayIterator<>(students), (student) -> student.getMark() >= 3);
         double markSum = 0;
         double studentNum = 0;
         while (studentIterator.hasNext()) {
             Student student = studentIterator.next();
-            if(student.getMark() >= 3) {
-                markSum += student.getMark();
-                studentNum++;
-            }
+            markSum += student.getMark();
+            studentNum++;
         }
         System.out.println("Average Positive Mark= " + markSum/studentNum);
     }
 
     public void showNotPassedStudents() {
-        studentIterator.reset();
+        FilterIterator<Student> studentIterator = new FilterIterator<>(new ArrayIterator<>(students), (student) -> student.getMark() < 3);
         while(studentIterator.hasNext()) {
-            Student student = studentIterator.next();
-            if(student.getMark() < 3) {
-                System.out.println(student);
-            }
+            System.out.println(studentIterator.next());
         }
     }
 }

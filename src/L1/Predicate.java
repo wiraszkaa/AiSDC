@@ -1,5 +1,5 @@
 package L1;
 
-public interface Predicate {
-    boolean term(Object object);
+public interface Predicate<T> {
+    boolean accept(T arg);
 }

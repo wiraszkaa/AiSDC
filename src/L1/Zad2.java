@@ -3,48 +3,40 @@ package L1;
 import java.util.ArrayList;
 
 public class Zad2 {
-    private final StudentZad2Iterator studentIterator;
+    private final StudentZad2[] students;
 
     public Zad2(StudentZad2[] students) {
-        this.studentIterator = new StudentZad2Iterator(students);
+        this.students = students;
     }
 
     public void showStudents() {
-        studentIterator.reset();
+        ArrayIterator<StudentZad2> studentIterator = new ArrayIterator<>(students);
         while(studentIterator.hasNext()) {
             System.out.println(studentIterator.next());
         }
     }
 
     public void addStudentMark(int index, double mark) {
-        studentIterator.reset();
+        FilterIterator<StudentZad2> studentIterator = new FilterIterator<>(new ArrayIterator<>(students), (student) -> student.getIndex() == index);
         while(studentIterator.hasNext()) {
-            if(studentIterator.next().getIndex() == index) {
-                studentIterator.addMark(mark);
-            }
+            studentIterator.next().addMark(mark);
         }
     }
 
     public void avgPositiveMark() {
-        studentIterator.reset();
+        FilterIterator<StudentZad2> studentIterator = new FilterIterator<>(new ArrayIterator<>(students), (student) -> student.getAverageMark() >= 3);
         ArrayList<Double> allMarks = new ArrayList<>();
         while (studentIterator.hasNext()) {
-            StudentZad2 student = studentIterator.next();
-            if(student.getAverageMark() >= 3) {
-                allMarks.addAll(student.getMarks());
-            }
+            allMarks.addAll(studentIterator.next().getMarks());
         }
         double avg = allMarks.stream().mapToDouble((val) -> val).sum() / allMarks.size();
         System.out.println("Average Positive Mark= " + avg);
     }
 
     public void showNotPassedStudents() {
-        studentIterator.reset();
+        FilterIterator<StudentZad2> studentIterator = new FilterIterator<>(new ArrayIterator<>(students), (student) -> student.getAverageMark() < 3);
         while (studentIterator.hasNext()) {
-            StudentZad2 student = studentIterator.next();
-            if(student.getAverageMark() < 3) {
-                System.out.println(student);
-            }
+            System.out.println(studentIterator.next());
         }
     }
 }

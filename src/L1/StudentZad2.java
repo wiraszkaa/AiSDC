@@ -1,8 +1,6 @@
 package L1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class StudentZad2 {
     private final int index;
